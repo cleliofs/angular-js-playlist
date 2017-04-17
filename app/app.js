@@ -1,6 +1,9 @@
 const myNinjaApp = angular.module('myNinjaApp', ['ngRoute', 'ngAnimate']);
 
-myNinjaApp.config(['$routeProvider', function ($routeProvider) {
+myNinjaApp.config(['$routeProvider', '$locationProvider', function ($routeProvider, $locationProvider) {
+
+    $locationProvider.html5Mode(true);
+
     $routeProvider
         .when('/home', {
             templateUrl: 'views/home.html',
@@ -11,7 +14,12 @@ myNinjaApp.config(['$routeProvider', function ($routeProvider) {
             controller: 'NinjaController'
         })
         .when('/contact', {
-            templateUrl: 'views/contact.html'
+            templateUrl: 'views/contact.html',
+            controller: 'ContactController'
+        })
+        .when('/contact-success', {
+            templateUrl: 'views/contact-success.html',
+            controller: 'ContactController'
         })
         .otherwise({
             redirectTo: '/home'
@@ -106,4 +114,10 @@ myNinjaApp.controller('NinjaController', ['$scope', 'httpFetcher', function($sco
         });
     // console.log(angular.toJson($scope.ninjas));
 
+}]);
+
+myNinjaApp.controller('ContactController', ['$scope', '$location', function ($scope, $location) {
+    $scope.sendMessage = function() {
+        $location.path('/contact-success');
+    }
 }]);

@@ -1,5 +1,5 @@
 <div class="content">
-    <form name="contactForm" novalidate>
+    <form name="contactForm" ng-submit="sendMessage()" novalidate>
         <span>
             $pristine - {{contactForm.name.$pristine}}
             $dirty - {{contactForm.name.$dirty}}
