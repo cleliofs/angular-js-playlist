@@ -3,31 +3,12 @@
   <head>
     <title>TheNetNinja Angular Playlist</title>
     <link href="content/css/styles.css" rel="stylesheet" type="text/css" />
-    <script src="app/lib/angular.min.js"></script>
+    <script src="app/lib/angular.js"></script>
+    <script src="app/lib/angular-route.js"></script>
     <script src="app/app.js"></script>
   </head>
   <body>
     <header ng-include="'header.html'"></header>
-    <div class="content">
-      <div ng-controller="NinjaController">
-        <button ng-click="order = 'name'">Order by name</button>
-        <button ng-click="order = 'belt'">Order by belt</button>
-        <input type="text" ng-model="search" placeholder="Search for a ninja"/>
-        <ul>
-          <li ng-repeat="n in ninjas | orderBy: order | filter: search" ng-show="n.available">
-            <img ng-src="{{n.thumb}}" style="margin: -12px 10px 0 0; float: left; width: 50px" ng-show="n.thumb"/>
-            <h3>{{n.name}} - {{n.rate | currency: "GPB(£)"}}</h3>
-            <div class="remove" ng-click="removeNinja(n)">x</div>
-            <span class="belt" style="background: {{n.belt}}">{{n.belt}} belt</span>
-          </li>
-        </ul>
-        <form ng-submit="addNinja()">
-          <input type="text" placeholder="name" ng-model="newNinja.name">
-          <input type="text" placeholder="belt" ng-model="newNinja.belt">
-          <input type="text" placeholder="rate" ng-model="newNinja.rate">
-          <input type="submit" value="Add new ninja">
-        </form>
-      </div>
-    </div>
+    <main ng-view></main>
   </body>
 </html>
