@@ -1,4 +1,4 @@
-const myNinjaApp = angular.module('myNinjaApp', ['ngRoute']);
+const myNinjaApp = angular.module('myNinjaApp', ['ngRoute', 'ngAnimate']);
 
 myNinjaApp.config(['$routeProvider', function ($routeProvider) {
     $routeProvider
@@ -9,6 +9,9 @@ myNinjaApp.config(['$routeProvider', function ($routeProvider) {
         .when('/directory', {
             templateUrl: 'views/directory.html',
             controller: 'NinjaController'
+        })
+        .when('/contact', {
+            templateUrl: 'views/contact.html'
         })
         .otherwise({
             redirectTo: '/home'
@@ -89,6 +92,10 @@ myNinjaApp.controller('NinjaController', ['$scope', 'httpFetcher', function($sco
         $scope.newNinja.name = "";
         $scope.newNinja.belt = "";
         $scope.newNinja.rate = "";
+    };
+
+    $scope.removeAllNinjas = function() {
+      $scope.ninjas = [];
     };
 
     httpFetcher.getNinjas()

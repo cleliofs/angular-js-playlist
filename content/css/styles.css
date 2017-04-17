@@ -53,6 +53,7 @@ main{
 
 .content{
   padding: 20px;
+  overflow: hidden;
 }
 
 .content button,
@@ -100,6 +101,13 @@ main{
   border: 2px solid #ddd;
   margin: 10px 0;
 }
+.content textarea{
+  width: 90%;
+  padding: 50px 5%;
+  border-radius: 10px;
+  border: 2px solid #ddd;
+  margin: 10px 0;
+}
 
 .content input[type="submit"]:last-child{
   width: 150px;
@@ -117,4 +125,52 @@ main{
   color: crimson;
   cursor: pointer;
   margin-left: 10px;
+}
+
+
+/* The starting CSS styles for the enter animation */
+main.ng-enter {
+  transition:0.5s linear all;
+  opacity:0;
+}
+
+/* The finishing CSS styles for the enter animation */
+main.ng-enter.ng-enter-active {
+  opacity:1;
+}
+
+#ninja-list li.ng-enter{
+  transition: 0.2s linear all;
+  opacity: 0;
+  transform: translateY(30px);
+}
+
+#ninja-list li.ng-enter.ng-center-active{
+  opacity: 1;
+  transform: translateY(0);
+}
+
+#ninja-list li.ng-leave {
+  transition: 0.2s linear all;
+  opacity: 1;
+  transform: translateX(0);
+}
+
+#ninja-list li.ng-leave.ng-leave-active {
+  opacity: 0;
+  transform: translateX(-100%);
+}
+
+#ninja-list li.ng-leave-stagger {
+  transition-delay: 0.2s;
+  transition-duration: 0;
+}
+
+input.ng-invalid.ng-touched, textarea.ng-invalid.ng-touched {
+  border: 2px solid red;
+}
+
+input[disabled="disabled"]{
+  opacity: 0.4;
+  cursor: not-allowed !important;
 }
